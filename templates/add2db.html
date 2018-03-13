@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>新增页</title>
+    <style type="text/css">
+        label{
+            width: 160px;
+            text-align: right;
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h2>用户{{username}}已登录，这里是 通道和设备 相关内容搜索页面</h2><br>
+        <a href="/logout/">退出登录</a><br>
+    </div>
+<p>
+
+
+
+<p>
+   <form action="/add2db/" method="POST">
+        <label>ip&nbsp;</label><input type="text" name="ip" value="" /><br>
+        <label>设备</label><input type="text" name="tongdao_name" value="" ><br>
+        <label>工厂</label><input type="text" name="factory" value=""/><br>
+        <label>部门</label><input type="text" name="department" value=""/><p>
+        <label>邮件列表</label><textarea rows="6" cols="80" name="email_list" value="" /></textarea><br>
+        <label></label><input type="submit" value="提交" />
+    </form>  
+
+{% for error in error_list%}
+    {{error}}<br>
+{% endfor %}
+</body>
+</html>

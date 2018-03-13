@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>显示通知页面</title>
+</head>
+<body >
+<a href="/blog/">新建一条通知</a>&nbsp;&nbsp;&nbsp;
+<a href="/sou/">搜索通道</a>
+<p>{{msg.0}}</p>
+
+    <form action="/blog/" method="POST">
+        <p>{{ bf.content.label }}  <br>{{ bf.content }}          {{ bf.errors.content.0 }}</p>
+        <p>{{ bf.writer.label }}           {{ bf.writer}}            {{ bf.errors.writer.0 }}</p>
+        <input type="submit" value="提交" />
+    </form>
+
+    <p>
+
+    {% for blog in blog_list %}
+        <div style="background-color:#00b7ee;">
+            通知： {{blog.content}} <br>
+            作者： {{blog.writer}} <br>
+            日期： {{blog.ctime | date:"Y-m-d  -H:i:s" }} <br>
+        </div>
+        <br>
+    {% endfor %}
+
+
+
+</body>
+</html>

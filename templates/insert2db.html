@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    <h1>从excel中取得数据，导入到数据库中</h1>
+    {%for row in rows%}
+    <br>
+    {{row.1}}   {{row.2}}  {{row.3}}  {{row.4}}  {{row.5}} {{row.6}}  {{row.7}}   {{row.8}}
+    {% endfor %}
+    <br>
+    -------------------------------
+    <br>
+    <h1>拼凑一下字符串，得到下面的内容</h1>
+    {%for db_list in db_lists%}
+    <br>
+   {{db_list.0}}  {{db_list.1}}   {{db_list.2}}  {{db_list.3}}  {{db_list.4}}  {{db_list.5}} {{db_list.6}} 
+    {% endfor %}
+</body>
+</html>

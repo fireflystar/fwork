@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>登录页面</title>
+</head>
+<body>
+{% if msg %}
+    <li>
+            <p style="color: red">
+                {{msg}}
+            </p>
+    </li>
+{% endif %}
+
+<form method="POST" action="/login/">
+{{uf.as_p}}
+<input type="submit" value="登录">
+</form>
+
+</body>
+</html>

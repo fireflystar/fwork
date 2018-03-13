@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>搜索页</title>
+    <style type="text/css">
+        label{
+            width: 160px;
+            text-align: right;
+            display: inline-block;
+        }
+        input{
+            width: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h3>用户{{username}}已登录，这里是 通道和设备 相关内容搜索页面<br>欢迎提意见</h3><br>
+        <a href="/logout/">退出登录</a><br>
+    </div>
+<p>
+帐号 zf
+密码 zf123456
+
+    <form action="/soujinque/" method="post">
+        <input type="text" name="tongdao" value="" placeholder=""/>
+        <input type="submit" value="精确搜索设备，例如 dv1c   im16   sr2j" />
+    </form>
+<p>
+
+    <form action="/sou/" method="post">
+        <input type="text" name="tongdao" value="" placeholder=""/>
+        <input type="submit" value="模糊搜索" />
+    </form>
+
+<p>
+{{ msg }}<br>
+<a href="/add2db/">新建</a>
+
+
+    {%for row in queryList %}
+        <div style="background-color:#00b7ee;">
+            <form method="post" action="/save2db/">
+                <label>设备id</label>&nbsp;&nbsp;<input type="text" name="ip" value="{{row.id}}"><br>
+                <label>通道id</label>&nbsp;&nbsp;<input type="text" name="ip" value="{{row.sb_id}}"><br>
+                <label>ip地址</label>&nbsp;&nbsp;<input type="text" name="ip" value="{{row.ip}}"><br>
+                <label>设备名称</label>&nbsp;&nbsp;<input type="text" name="tongdaoN" value="{{row.tongdaoN}}"><br>
+                <label>通道全称</label>&nbsp;&nbsp;<input type="text" name="tongdaoFull" value="{{row.tongdaoFull}}"><br>
+                <label>通道描述</label>&nbsp;&nbsp;<input type="text" name="description" value="{{row.description}}"><br>
+                <label>sysmon上的位置</label>&nbsp;&nbsp;<input type="text" name="instance" value="{{row.instance}}"><br>
+                <label>来自表格</label>&nbsp;&nbsp;<input type="text" name="sheetName" value="{{row.sheetName}}"><br>
+                <label>通道的备注</label>&nbsp;&nbsp;<input type="text" name="remarks" value="{{row.remarks}}"><br>
+                <label>设备所在工厂</label>&nbsp;&nbsp;<input type="text" name="factory" value="{{row.sb.factory}}"><br>
+                <label>设备部门</label>&nbsp;&nbsp;<input type="text" name="department" value="{{row.sb.department}}"><br>
+                <label>设备的备注</label>&nbsp;&nbsp;<input type="text" name="shebeRemarks" value="{{row.sb.shebeRemarks}}"><p>
+                <label>联系人</label>&nbsp;&nbsp;<textarea name="email_list" rows="3" cols="80">{% for line in row.sb.r.all%}{{line.email}};{% endfor %}</textarea><p>
+
+                <label></label><button type="submit">修改并保存</button>
+
+            </form>
+        </div>
+        <br>
+    {%endfor%}  
+
+</body>
+</html>
